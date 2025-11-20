@@ -1,0 +1,905 @@
+{
+    "info": {
+        "_postman_id": "59234e32-e9fc-4e43-ad69-5e691eb80214",
+        "name": "ArtemisBaking",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "27476908"
+    },
+    "item": [
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "Login user admin",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "default"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "//{\r\n // \"usernameOrEmail\": \"Starling\",\r\n // \"password\": \"Starling12345\"\r\n//}\r\n\r\n {\r\n   \"usernameOrEmail\": \"admin\",\r\n   \"password\": \"Admin123!\"\r\n }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/account/login",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "account",
+                                "login"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get All User",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:5073/api/users?pageIndex=1&pageSize=10",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "users"
+                            ],
+                            "query": [
+                                {
+                                    "key": "pageIndex",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "10"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add user",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "default"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"username\": \"Starling\",\r\n  \"email\": \"chichofranco252@gmail.com\",\r\n  \"password\": \"Starling12345\",\r\n  \"confirmPassword\": \"Starling12345\",\r\n  \"firstName\": \"starling\",\r\n  \"lastName\": \"rosario\",\r\n  \"nationalId\": \"40210957300\",\r\n  \"role\": 3,\r\n  \"initialAmount\": 5000.0\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/users",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "users"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "forgot-password",
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "default"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"email\": \"chichofranco252@gmail.com\"\r\n}\r\n"
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/account/forgot-password",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "account",
+                                "forgot-password"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "reset-password",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "default"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"UserId\": \"69dcc91e-c75e-4c2d-8e20-031c28faa233\",\r\n  \"email\": \"cliente2@artemis.local\",\r\n  \"token\": \"TOKEN_DEL_CORREO\",\r\n  \"newPassword\": \"NuevoPass123!\",\r\n  \"ConfirmPassword\": \"NuevoPass123!\"\r\n}\r\n"
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/account/reset-password",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "account",
+                                "reset-password"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "confirm-email",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "default"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"userId\": \"69dcc91e-c75e-4c2d-8e20-031c28faa233\",\r\n  \"token\": \"TOKEN_CONFIRMACION\"\r\n}\r\n"
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/account/confirm-email",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "account",
+                                "confirm-email"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get user by id",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "default"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/users/69dcc91e-c75e-4c2d-8e20-031c28faa233",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "users",
+                                "69dcc91e-c75e-4c2d-8e20-031c28faa233"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "update user",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "default"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"username\": \"Starling\",\r\n  \"email\": \"chichofranco252@gmail.com\",\r\n  \"firstName\": \"Starling\",\r\n  \"lastName\": \"Rosario Franco\",\r\n  \"nationalId\": \"40210957300\",\r\n  \"newPassword\": \"\",\r\n  \"confirmNewPassword\": \"\",\r\n  \"additionalAmount\": 0\r\n}\r\n\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/users/69dcc91e-c75e-4c2d-8e20-031c28faa233",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "users",
+                                "69dcc91e-c75e-4c2d-8e20-031c28faa233"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Activar inactivar user",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "default"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"username\": \"Starling\",\r\n  \"email\": \"chichofranco252@gmail.com\",\r\n  \"firstName\": \"Starling\",\r\n  \"lastName\": \"Rosario Franco\",\r\n  \"nationalId\": \"40210957300\",\r\n  \"newPassword\": \"\",\r\n  \"confirmNewPassword\": \"\",\r\n  \"additionalAmount\": 0\r\n}\r\n\r\n"
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/users/69dcc91e-c75e-4c2d-8e20-031c28faa233/toggle-active",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "users",
+                                "69dcc91e-c75e-4c2d-8e20-031c28faa233",
+                                "toggle-active"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Loans",
+            "item": [
+                {
+                    "name": "Get loan",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:5073/api/loans/",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "loans",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get loan by identification user",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZDZmNjdkMy02ODhhLTRlODMtYjVhYS1iYjdlMjJlNmJlMmYiLCJ1bmlxdWVfbmFtZSI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJiZDZmNjdkMy02ODhhLTRlODMtYjVhYS1iYjdlMjJlNmJlMmYiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBhcnRlbWlzLmxvY2FsIiwicm9sZV9lbnVtIjoiMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzYzNjA4NDcxLCJpc3MiOiJBcnRlbWlzQmFua2luZyIsImF1ZCI6IkFydGVtaXNCYW5raW5nLkFwaSJ9.HPqsrl2zFa4t0G7IaRv1cVoptwH0N3qCaCOKmiHdTK4",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:5073/api/loans/search?nationalId=00100000001",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "loans",
+                                "search"
+                            ],
+                            "query": [
+                                {
+                                    "key": "nationalId",
+                                    "value": "00100000001"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "create loan",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZDZmNjdkMy02ODhhLTRlODMtYjVhYS1iYjdlMjJlNmJlMmYiLCJ1bmlxdWVfbmFtZSI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJiZDZmNjdkMy02ODhhLTRlODMtYjVhYS1iYjdlMjJlNmJlMmYiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBhcnRlbWlzLmxvY2FsIiwicm9sZV9lbnVtIjoiMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzYzNjA5NDg2LCJpc3MiOiJBcnRlbWlzQmFua2luZyIsImF1ZCI6IkFydGVtaXNCYW5raW5nLkFwaSJ9.mHxoF3YeC5_S96j7xwaRo3J-oCUNWYtCse0q6RsHn5I",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "default"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"clientId\": \"abb8d38f-54a0-4ce4-bf25-4e430a85a20d\",\r\n  \"amount\": 50000,\r\n  \"termInMonths\": 12,\r\n  \"annualInterestRate\": 18\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/loans",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "loans"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "assignable-clients",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:5073/api/loans/assignable-clients",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "loans",
+                                "assignable-clients"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Loan by id",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:5073/api/loans/f89ce9e2-a1be-4207-b8a7-19bdd5e9a824",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "loans",
+                                "f89ce9e2-a1be-4207-b8a7-19bdd5e9a824"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update AnnualRate",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"newAnnualRate\": 24\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/loans/f89ce9e2-a1be-4207-b8a7-19bdd5e9a824/rate",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "loans",
+                                "f89ce9e2-a1be-4207-b8a7-19bdd5e9a824",
+                                "rate"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "run-overdue-job",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/loans/run-overdue-job",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "loans",
+                                "run-overdue-job"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "CreditCad",
+            "item": [
+                {
+                    "name": "Listado de tarjetas activas",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/credit-cards?pageIndex=1&pageSize=20",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "credit-cards"
+                            ],
+                            "query": [
+                                {
+                                    "key": "pageIndex",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "20"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Buscar por cedula y filtros",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/credit-cards/search?nationalId=40210957300&pageIndex=1&pageSize=20&status=Active",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "credit-cards",
+                                "search"
+                            ],
+                            "query": [
+                                {
+                                    "key": "nationalId",
+                                    "value": "40210957300"
+                                },
+                                {
+                                    "key": "pageIndex",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "20"
+                                },
+                                {
+                                    "key": "status",
+                                    "value": "Active"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Clientes elegibles",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:5073 /api/credit-cards/assignable-clients",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073 ",
+                            "path": [
+                                "api",
+                                "credit-cards",
+                                "assignable-clients"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Asignar tarjeta a cliente",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"clientId\": \"18a1a7dc-06a0-43bb-aa5f-862822bbbe86\",\r\n  \"initialLimit\": 50000\r\n}\r\n"
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/credit-cards",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "credit-cards"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Detalle de tarjeta",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:5073/api/credit-cards/7144f6d2-42ea-467d-9180-0cd1bc86008b",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "credit-cards",
+                                "7144f6d2-42ea-467d-9180-0cd1bc86008b"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Actualizar limite",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"newLimit\": 75000\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:5073/api/credit-cards/7144f6d2-42ea-467d-9180-0cd1bc86008b/limit",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5073",
+                            "path": [
+                                "api",
+                                "credit-cards",
+                                "7144f6d2-42ea-467d-9180-0cd1bc86008b",
+                                "limit"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "New Request",
+                    "request": {
+                        "method": "GET",
+                        "header": []
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}

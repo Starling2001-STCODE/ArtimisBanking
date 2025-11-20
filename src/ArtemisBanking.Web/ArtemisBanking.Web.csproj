@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ArtemisBanking.Application\ArtemisBanking.Application.csproj" />
+    <ProjectReference Include="..\ArtemisBanking.Infrastructure.Persistence\ArtemisBanking.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\ArtemisBanking.Infrastructure.Identity\ArtemisBanking.Infrastructure.Identity.csproj" />
+    <ProjectReference Include="..\ArtemisBanking.Infrastructure.Shared\ArtemisBanking.Infrastructure.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
